@@ -1,0 +1,52 @@
+<html>
+<head>
+<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+</script>
+</head> 
+<body>
+Consider a form as such:
+<p>Who is going to win the Heineken cup next year?</P>
+<ul id="choice">
+<li>
+<input name="source" id="source1" type="radio" value="Leinster"/>
+<label for="source1">Leinster</label>
+</li>
+<li>
+<input name="source" id="source2" type="radio" value="Munster"/>
+<label for="source2">Munster</label>
+</li>
+<li>
+<input name="source" id="source3" type="radio" value="Ulster"/>
+<label for="source3">Ulster</label>
+</li>
+<li>
+<input name="source" id="source4" type="radio" value="Connacht"/>
+<label for="source4">Connacht</label>
+</li>
+<li>
+<input name="source" id="source5" type="radio" value="Other"/>
+<label for="source5">Other</label>
+<input name="Source5Txt" id="Source5Txt" type="text"/>
+</li>
+</li>
+</ul>
+<script>
+$('#choice input:text').(function() {
+   // store some variables locally as they are used more than once.
+   var $inputText = $(this);
+   var $radioBtn = $inputText.siblings('input:radio');  // all sibling radio buttons
+
+   // If any of the sibling radio buttons change, check to see 
+   $radioBtn.change(function(){
+      // if it checked focus on the text input
+      if (this.checked) {$inputText.focus();}
+   });
+
+   // listen for the blur event on the text input
+   $inputText.keypress(function() {
+       $radioBtn.attr('checked', true);
+   });
+});
+</script>
+</body>
+</html>
